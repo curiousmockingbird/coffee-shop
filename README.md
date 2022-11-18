@@ -2,7 +2,7 @@
 
 
 ## Coffee Shop Diagram
-<img src="src/img/Coffe_shop_diagram.png">
+<img src="src/img/diagram.png">
 
 
 
