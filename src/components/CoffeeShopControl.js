@@ -9,7 +9,12 @@ class CoffeeShopControl extends React.Component{
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainSackList: [],
+      mainSackList: [  {
+        name: 'Help and Queue',
+        origin: '3B',
+        price: 'Help Queue isn\'t queueing. Halp.',
+        roast: 'Help Queue isn\'t queueing. Halp.'
+      }],
       selectedSack: null,
       editing: null
     };
@@ -48,12 +53,17 @@ class CoffeeShopControl extends React.Component{
   handleEditingSack(){
     this.setState({editing: true});
   }
-  // handleSellingCoffee(){
-
-  // }
-  // handleAddingNewSackToList(){
-
-  // }
+  handleSellingCoffee(sack){
+    sack.quantity-= 1;
+    this.setState({
+    selectedSack: sack
+  });
+  }
+  handleAddingNewSackToList(newSack){
+    const newMainSackList = this.state.mainSackList.concat(newSack);
+    this.setState({mainSackList: newMainSackList,
+    formVisibleOnPage: false});
+  }
   handleChangingSelectedSack(id){
     const selectedSack = this.state.mainSackList
     .filter(sack  => sack.id === id)[0];

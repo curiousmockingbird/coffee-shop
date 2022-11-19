@@ -5,9 +5,9 @@ import ReusableForm from "./ReusableForm";
 
 function NewSackForm(props) {
 
-  function handleNewTicketFormSubmission(event) {
+  function handleNewSackFormSubmission(event) {
     event.preventDefault();
-    props.onNewTicketCreation({
+    props.onNewSackCreation({
       name: event.target.name.value,
       origin: event.target.origin.value,
       price: event.target.price.value,
@@ -19,14 +19,14 @@ function NewSackForm(props) {
   return (
     <React.Fragment>
       <ReusableForm
-        formSubmissionHandler={handleNewTicketFormSubmission} 
+        formSubmissionHandler={handleNewSackFormSubmission} 
         buttonText="Add" />
     </React.Fragment>
   )
 }
 
 NewSackForm.propTypes = {
-  onNewTicketCreation: PropTypes.func
+  onNewSackCreation: PropTypes.func
 };
 
 export default NewSackForm;
