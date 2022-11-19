@@ -1,9 +1,12 @@
 import React from "react";
 
 function Header(){
-  return(
-    <h1>Matildas' Coffee Shop</h1>
+  return (
+    <React.Fragment>
+      <h1>Help Queue</h1>
+      <h5>Help Queue goes here</h5>
+    </React.Fragment>
   );
 }
 
-export default Header
+export default Header;
