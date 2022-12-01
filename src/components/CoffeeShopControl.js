@@ -1,5 +1,5 @@
 import React from "react";
-import CoffeeShopMenu from "./CoffeeShopMenu";
+import SackList from "./SackList";
 import SackDetails from "./SackDetails";
 import NewSackForm from "./NewSackForm";
 import EditSackForm from "./EditSackForm";
@@ -9,12 +9,7 @@ class CoffeeShopControl extends React.Component{
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainSackList: [  {
-        name: 'Help and Queue',
-        origin: '3B',
-        price: 'Help Queue isn\'t queueing. Halp.',
-        roast: 'Help Queue isn\'t queueing. Halp.'
-      }],
+      mainSackList: [],
       selectedSack: null,
       editing: null
     };
@@ -30,9 +25,8 @@ class CoffeeShopControl extends React.Component{
     } else {
       this.setState(prevState =>({formVisibleOnPage: !prevState.formVisibleOnPage}))
     }
-
   }
-  handleEditingSackInList(sackToEdit){
+  handleEditingSackInList = (sackToEdit) => {
     const editedMainSackList = this.state.mainSackList
     .filter(sack  => sack.id !== this.state.selectedSack.id)
     .concat(sackToEdit);
@@ -42,7 +36,7 @@ class CoffeeShopControl extends React.Component{
       selectedSack: null
     });
   }
-  handleDeletingSack(id){
+  handleDeletingSack = (id) => {
     const newMainSackList = this.state.mainSackList
     .filter(sack  => sack.id !== id)
     this.setState({
@@ -50,7 +44,7 @@ class CoffeeShopControl extends React.Component{
       selectedSack: null
     });
   }
-  handleEditingSack(){
+  handleEditingSack = () => {
     this.setState({editing: true});
   }
   handleSellingCoffee(sack){
@@ -59,12 +53,13 @@ class CoffeeShopControl extends React.Component{
     selectedSack: sack
   });
   }
-  handleAddingNewSackToList(newSack){
+  handleAddingNewSackToList = (newSack) => {
+    console.log(this.state);
     const newMainSackList = this.state.mainSackList.concat(newSack);
-    this.setState({mainSackList: newMainSackList,
-    formVisibleOnPage: false});
+    this.setState({mainSackList: newMainSackList});
+    this.setState({formVisibleOnPage: false});
   }
-  handleChangingSelectedSack(id){
+  handleChangingSelectedSack = (id) => {
     const selectedSack = this.state.mainSackList
     .filter(sack  => sack.id === id)[0];
     this.setState({selectedSack: selectedSack})
@@ -87,12 +82,13 @@ class CoffeeShopControl extends React.Component{
       onClickingSell = {this.handleSellingCoffee} />
       buttonText= "Return to menu";
     } else if (this.state.formVisibleOnPage){
-      currentlyVisibleState = <NewSackForm 
+      currentlyVisibleState = 
+      <NewSackForm 
       onNewSackCreation = {this.handleAddingNewSackToList} />
       buttonText= "Return to menu";
     } else {
-      currentlyVisibleState = <CoffeeShopMenu 
-      coffeeShopMenu = {this.state.mainSackList}
+      currentlyVisibleState = <SackList 
+      sackList = {this.state.mainSackList}
       onClickingOnSack = {this.handleChangingSelectedSack}/>
       buttonText= "Add burlap sack to inventory";
     }

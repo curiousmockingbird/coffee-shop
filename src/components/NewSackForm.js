@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { v4 } from "uuid";
 import ReusableForm from "./ReusableForm";
+import { v4 } from "uuid";
 
 function NewSackForm(props) {
 
@@ -10,7 +10,7 @@ function NewSackForm(props) {
     props.onNewSackCreation({
       name: event.target.name.value,
       origin: event.target.origin.value,
-      price: event.target.price.value,
+      price: parseInt(event.target.price.value),
       roast: event.target.roast.value,
       id: v4()
     });
@@ -18,6 +18,7 @@ function NewSackForm(props) {
 
   return (
     <React.Fragment>
+      <h5>Add the details for the new sack of coffee!</h5>
       <ReusableForm
         formSubmissionHandler={handleNewSackFormSubmission} 
         buttonText="Add" />
@@ -26,7 +27,7 @@ function NewSackForm(props) {
 }
 
 NewSackForm.propTypes = {
-  onNewSackCreation: PropTypes.func
+onNewSackCreation: PropTypes.func
 };
 
 export default NewSackForm;

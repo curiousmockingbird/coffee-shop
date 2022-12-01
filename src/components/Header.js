@@ -3,8 +3,7 @@ import React from "react";
 function Header(){
   return (
     <React.Fragment>
-      <h1>Help Queue</h1>
-      <h5>Help Queue goes here</h5>
+      <h1>Welcome to Matilda's Coffee Shop</h1>
     </React.Fragment>
   );
 }
