@@ -9,6 +9,7 @@ function Sack(props) {
         <h3>{props.origin}</h3>
         <h3>{props.price}</h3>
         <h3>{props.roast}</h3>
+        <h3>{props.quantity}</h3>
         <hr />
       </div>
     </React.Fragment>
@@ -20,6 +21,7 @@ Sack.propTypes = {
   origin: PropTypes.string,
   price: PropTypes.number,
   roast: PropTypes.string, // new PropType
+  quantity: PropTypes.number, // new PropType
   whenSackClicked: PropTypes.func // new PropType
 };
 

@@ -12,6 +12,7 @@ function NewSackForm(props) {
       origin: event.target.origin.value,
       price: parseInt(event.target.price.value),
       roast: event.target.roast.value,
+      quantity: parseInt(event.target.quantity.value),
       id: v4()
     });
   }

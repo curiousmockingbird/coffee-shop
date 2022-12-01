@@ -10,8 +10,9 @@ function EditSackForm(props) {
     props.onEditSack({
       name: event.target.name.value,
       origin: event.target.origin.value,
-      price: event.target.price.value,
+      price: parseInt(event.target.price.value),
       roast: event.target.roast.value,
+      quantity: parseInt(event.target.quantity.value),
       id: sack.id
     });
   }

@@ -47,14 +47,23 @@ class CoffeeShopControl extends React.Component{
   handleEditingSack = () => {
     this.setState({editing: true});
   }
-  handleSellingCoffee(sack){
-    sack.quantity-= 1;
-    this.setState({
-    selectedSack: sack
-  });
+  handleSellingCoffee = (id) => {
+    const sack = this.state.mainSackList
+    .filter(sack => sack.id === id)[0];
+
+    if(sack.quantity > 0) {
+      sack.quantity-= 1;
+      this.setState({
+      selectedSack: sack
+    });
+    } else {
+      this.setState({
+      selectedSack: sack
+      })
+    }
   }
   handleAddingNewSackToList = (newSack) => {
-    console.log(this.state);
+    console.log(newSack);
     const newMainSackList = this.state.mainSackList.concat(newSack);
     this.setState({mainSackList: newMainSackList});
     this.setState({formVisibleOnPage: false});
